@@ -1,0 +1,52 @@
+---
+import 'src/css/preflight.css'
+import 'src/css/global.css'
+import Head from './Head.astro';
+import NavFooter from './NavFooter.astro'
+import NavToggle from "./NavToggle.astro";
+import NavSocial from './NavSocial.astro';
+import NavHeader from './NavHeader.astro';
+import Logo from './Logo.astro';
+import ThemePicker from './ThemePicker.astro';
+
+interface Props {
+  pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html data-theme='one' class='scroll-smooth' lang="en">
+
+  <Head {pageTitle}/>
+  <body class='GradientOne'>
+
+    <header class='ResponsiveMargins | bg-clr-over py-8 shadow-lg' >
+      <div class='MaxCenter FlexBetween relative'> 
+        <Logo/>
+        <NavToggle >
+          <NavHeader />
+        </NavToggle>
+        <ThemePicker/> 
+      </div>
+    </header>
+
+    <main class="ResponsiveMargins | py-28">
+      <div class= 'MaxCenter relative'>
+        <slot/>
+      </div>
+    </main>
+
+    <footer class="ResponsiveMargins | bg-clr-over py-8 ">
+      <div class="MaxCenter FlexBetween ">
+        <Logo/>
+        <NavSocial/>
+        <NavToggle >
+          <NavFooter />
+        </NavToggle>   
+      </div>
+    </footer>
+
+  </body>
+</html>
